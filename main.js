@@ -70,4 +70,33 @@ const findInvalidCards = (nestedArr) => {
   return invalidCards;
 };
 
-console.log(findInvalidCards(batch));
+const idInvalidCardCompanies = (invalidCardsArr) => {
+  companiesArr = [];
+  for (arr of invalidCardsArr) {
+    let firstNum = arr[0];
+    switch (firstNum) {
+      case 3:
+        companiesArr.push("Amex (American Express)");
+        break;
+      case 4:
+        companiesArr.push("Visa");
+        break;
+      case 5:
+        companiesArr.push("Mastercard");
+        break;
+      case 6:
+        companiesArr.push("Discover");
+        break;
+      default:
+        companiesArr.push("Company not found");
+        break;
+    }
+  }
+  return removeDuplicates(companiesArr);
+};
+
+function removeDuplicates(arr) {
+  return [...new Set(arr)];
+}
+
+console.log(idInvalidCardCompanies(findInvalidCards(batch)));
